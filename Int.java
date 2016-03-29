@@ -1,10 +1,10 @@
 
 
-class IntComparable implements Comparable
+class Int implements Comparable, Ordered
 {
 	private int val;
 	
-	public IntComparable(int a)
+	public Int(int a)
 	{
 		val = a;
 	}
@@ -16,8 +16,37 @@ class IntComparable implements Comparable
 	
 	public int compareTo(Object o)
 	{
-		IntComparable other = (IntComparable) o;
+		if(o == null || !(o instanceof Int))
+			return -2;
 		
-		return other.getVal() - val;
+		Int other = (Int) o;
+		
+		if(this.val < other.getVal())
+			return -1;
+		else
+			if(this.val > other.getVal())
+				return 1;
+			else
+				return 0;
+	}
+	
+	public boolean precedes(Object o)
+	{
+		if(o == null || !(o instanceof Int))
+			return false;
+		
+		Int other = (Int) o;
+		
+		return (this.val < other.getVal());
+	}
+	
+	public boolean follows(Object o)
+	{
+		if(o == null || !(o instanceof Int))
+			return false;
+		
+		Int other = (Int) o;
+		
+		return (this.val > other.getVal());
 	}
 }
