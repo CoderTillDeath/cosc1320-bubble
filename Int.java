@@ -1,4 +1,10 @@
 
+interface Ordered
+{
+	public boolean precedes(Object o);
+	public boolean follows(Object o);
+}
+
 
 class Int implements Comparable, Ordered
 {
@@ -48,5 +54,10 @@ class Int implements Comparable, Ordered
 		Int other = (Int) o;
 		
 		return (this.val > other.getVal());
+	}
+	
+	public String toString()
+	{
+		return "" + val;
 	}
 }
